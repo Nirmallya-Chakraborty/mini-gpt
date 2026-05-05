@@ -1,0 +1,21 @@
+fastapi
+uvicorn
+pydantic
+
+# LLM / API
+openai
+
+# Local model (optional)
+transformers
+torch
+accelerate
+
+# Embeddings
+sentence-transformers
+
+# Vector DB
+faiss-cpu
+numpy
+
+# Config
+python-dotenv

@@ -1,0 +1,49 @@
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Body ===== */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f3f4f6; /* light gray */
+  color: #111827; /* dark text */
+}
+
+/* ===== Scrollbar (nice UI touch) ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* ===== Chat container tweaks ===== */
+.chat-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+/* ===== Message bubble animation ===== */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
