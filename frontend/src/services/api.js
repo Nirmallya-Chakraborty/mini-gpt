@@ -1,8 +1,8 @@
-const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+const API_URL = "http://192.168.1.185:8001";
 
 export const sendMessageAPI = async (message) => {
   try {
-    const res = await fetch(`${BASE_URL}/api/chat`, {
+    const response = await fetch(`${API_URL}/api/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -10,13 +10,14 @@ export const sendMessageAPI = async (message) => {
       body: JSON.stringify({ message }),
     });
 
-    if (!res.ok) {
+    if (!response.ok) {
       throw new Error("Failed to fetch response from server");
     }
 
-    return await res.json();
+    return await response.json();
+
   } catch (error) {
     console.error("API Error:", error);
-    return { response: "Error connecting to backend ??" };
+    throw error;
   }
 };
