@@ -2,20 +2,22 @@ version: "3.9"
 
 services:
 
-ollama:
-  image: ollama/ollama:latest
-  container_name: ollama
-  ports:
-    - "11434:11434"
-  volumes:
-    - ollama_data:/root/.ollama
-  entrypoint: >
-    sh -c "
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: always
+    entrypoint: >
+      sh -c "
       ollama serve &
       sleep 10 &&
       ollama pull llama3.2:1b &&
       wait
-    "
+      "
+
   backend:
     build: ./backend
     ports:
@@ -24,6 +26,7 @@ ollama:
       - ollama
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
+    restart: always
 
   frontend:
     build: ./frontend
@@ -31,6 +34,7 @@ ollama:
       - "5173:5173"
     depends_on:
       - backend
+    restart: always
 
 volumes:
   ollama_data:
