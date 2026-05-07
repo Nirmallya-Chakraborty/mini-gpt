@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: your-dockerhub/backend:latest
+          ports:
+            - containerPort: 8001
+          env:
+            - name: OLLAMA_BASE_URL
+              value: "http://ollama:11434"
