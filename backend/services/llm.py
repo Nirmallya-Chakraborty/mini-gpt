@@ -1,9 +1,8 @@
 import requests
 
-# Ollama runs as a service in docker-compose
-OLLAMA_URL = "http://host.docker.internal:11434"
+OLLAMA_URL = "http://ollama:11434/api/generate"
 
-MODEL = "llama3"  # change if needed
+MODEL = "llama3.2:1b"  # better lightweight option
 
 def generate_response(prompt: str) -> str:
     try:
