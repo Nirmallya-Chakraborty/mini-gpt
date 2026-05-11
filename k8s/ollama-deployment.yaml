@@ -2,24 +2,39 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ollama
+
 spec:
   replicas: 1
+
   selector:
     matchLabels:
       app: ollama
+
   template:
     metadata:
       labels:
         app: ollama
+
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: master
+
+      tolerations:
+        - key: "node-role.kubernetes.io/control-plane"
+          operator: "Exists"
+          effect: "NoSchedule"
+
       containers:
         - name: ollama
           image: ollama/ollama:latest
+
           ports:
             - containerPort: 11434
+
           volumeMounts:
             - name: ollama-storage
               mountPath: /root/.ollama
+
       volumes:
         - name: ollama-storage
           emptyDir: {}
