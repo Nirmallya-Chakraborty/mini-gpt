@@ -28,6 +28,9 @@ spec:
         - name: ollama
           image: ollama/ollama:latest
 
+          command: ["/bin/ollama"]
+          args: ["serve"]
+
           ports:
             - containerPort: 11434
 
