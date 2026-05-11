@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.1.185:8001";
+const API_URL = "http://192.168.1.185:30008";
 
 export const sendMessageAPI = async (message) => {
   try {

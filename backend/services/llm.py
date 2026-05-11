@@ -1,13 +1,14 @@
+import os
 import requests
 
-OLLAMA_URL = "http://ollama:11434/api/generate"
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://192.168.1.185:11434")
 
-MODEL = "llama3.2:1b"  # better lightweight option
+MODEL = "llama3.2:1b"
 
 def generate_response(prompt: str) -> str:
     try:
         response = requests.post(
-            OLLAMA_URL,
+            f"{OLLAMA_BASE_URL}/api/generate",
             json={
                 "model": MODEL,
                 "prompt": prompt,
