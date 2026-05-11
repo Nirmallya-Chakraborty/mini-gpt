@@ -19,4 +19,4 @@ spec:
             - containerPort: 8001
           env:
             - name: OLLAMA_BASE_URL
-              value: "http://ollama:11434"
+              value: "http://192.168.1.185:11434"
