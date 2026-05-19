@@ -1,22 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: backend
+
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: backend=nirmallyachakraborty/mini-gpt-backend
+    argocd-image-updater.argoproj.io/backend.update-strategy: latest
+    argocd-image-updater.argoproj.io/backend.allow-tags: regexp:^v[0-9]+$
+    argocd-image-updater.argoproj.io/write-back-method: git
+
 spec:
   replicas: 2
+
   selector:
     matchLabels:
       app: backend
+
   template:
     metadata:
       labels:
         app: backend
+
     spec:
       containers:
         - name: backend
-          image: nirmallyachakraborty/mini-gpt-backend:latest
+
+          image: nirmallyachakraborty/mini-gpt-backend:v1
+
           ports:
             - containerPort: 8001
+
           env:
             - name: OLLAMA_BASE_URL
               value: "http://192.168.1.185:11434"

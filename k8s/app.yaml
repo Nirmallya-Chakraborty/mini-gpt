@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: mini-gpt
+  namespace: argocd
+
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: frontend=nirmallyachakraborty/mini-gpt-frontend,backend=nirmallyachakraborty/mini-gpt-backend
+
+    argocd-image-updater.argoproj.io/frontend.update-strategy: latest
+    argocd-image-updater.argoproj.io/backend.update-strategy: latest
+
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/git-branch: main
+    argocd-image-updater.argoproj.io/write-back-target: kustomization
+
+    argocd-image-updater.argoproj.io/git-credentials-secret: git-creds
+
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+
+  project: default
+
+  source:
+    repoURL: https://github.com/Nirmallya-Chakraborty/mini-gpt.git
+    targetRevision: main
+    path: k8s
+
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
