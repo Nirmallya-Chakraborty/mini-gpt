@@ -8,8 +8,8 @@ metadata:
   annotations:
     argocd-image-updater.argoproj.io/image-list: frontend=nirmallyachakraborty/mini-gpt-frontend,backend=nirmallyachakraborty/mini-gpt-backend
 
-    argocd-image-updater.argoproj.io/frontend.update-strategy: latest
-    argocd-image-updater.argoproj.io/backend.update-strategy: latest
+    argocd-image-updater.argoproj.io/frontend.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/backend.update-strategy: newest-build
 
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/git-branch: main
