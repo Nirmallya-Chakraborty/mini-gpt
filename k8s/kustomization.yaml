@@ -9,4 +9,4 @@ images:
 - name: nirmallyachakraborty/mini-gpt-frontend
   newTag: dea735b
 - name: nirmallyachakraborty/mini-gpt-backend
-  newTag: dea735b
+  newTag: bcabff4
