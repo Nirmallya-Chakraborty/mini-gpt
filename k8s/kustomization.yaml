@@ -7,6 +7,6 @@ resources:
 - backend-service.yaml
 images:
 - name: nirmallyachakraborty/mini-gpt-frontend
-  newTag: 5ec94ab
+  newTag: f7833ba
 - name: nirmallyachakraborty/mini-gpt-backend
-  newTag: 5ec94ab
+  newTag: f7833ba
