@@ -9,4 +9,4 @@ images:
 - name: nirmallyachakraborty/mini-gpt-frontend
   newTag: 2a9c813
 - name: nirmallyachakraborty/mini-gpt-backend
-  newTag: 0028f58
+  newTag: db4e6e4
